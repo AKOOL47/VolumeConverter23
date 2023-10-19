@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title>Volume Conversion Application</title>
+<style>
+	* {font-size:60px; font-family:Calibri;}
+	body {background-color:lightyellow;}
+	.btn { color: white; background-color:red; margin:2%; border-radius:20px;}
+	.nav {background-color:black;}
+	.nav a {color:white; text-decoration:none; margin:5%;}
+</style>
+<script>
+	function compute()
+{
+	event.preventDefault();
+	let volume = document.getElementById("volume");
+	let ans = document.getElementById("ans");
+
+	if (volume.value == "")
+	{
+		alert("Volume Is Empty");
+		ans.innerHTML = "";
+		volume.focus();
+		return;
+	}
+
+	let v = parseFloat(volume.value);
+	if (v < 0.1)
+	{
+		alert("-ve number not allowed");
+		volume.value = "";
+		ans.innerHTML = "";
+		volume.focus();
+		return;
+	}
+
+	if (volume.value.trim() == "")
+	{
+		alert("Value Should Not Contain Only Blank Spaces");
+		ans.innerHTML = "";
+		volume.value = "";
+		volume.focus();
+		return;
+	}
+
+	let vig =  v * 0.264172;
+	let msg = "Volume in Gallons = " + vig.toFixed(2);
+	ans.innerHTML = msg;  
+}
+</script>
+</head>
+<body>
+<center>
+<div class="nav">
+	<a href="index.html">Home</a>
+	<a href="about.html">About</a>
+</div>
+<h1>Volume Conversion By AK</h1>
+<form onsubmit="compute()">
+	<input type="text" placeholder="Enter Volume in Litres" id="volume"/>
+	<br><br>
+	<input type="submit" value="Convert" class="btn"/>
+</form>
+	<h1 id="ans" />
+</center>
+</body>
+</html>
